@@ -7,6 +7,7 @@ def generate_pwd(min_length, numbers=True, special_chars=True):
     special = string.punctuation
 
     characters = letters
+
     if numbers:
         characters += digits
     if special:
@@ -33,6 +34,11 @@ def generate_pwd(min_length, numbers=True, special_chars=True):
             meets_criteria = meets_criteria and has_special
     return pwd
 
+min_length = int(input("Enter the minimum length of your password: "))
+has_number = str(input("Would you like to use numbers: \t (y/n)?" )).lower() == "y"
+has_special = str(input("Would you like to use special characters: \t (y/n)?" )).lower() == "y"
 
-pwd = generate_pwd(10)
-print = pwd
+pwd = generate_pwd(min_length, has_special, has_number)
+print(f"Here is your generated password: {pwd}")
+
+
