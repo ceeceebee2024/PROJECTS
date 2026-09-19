@@ -1,54 +1,52 @@
 import string
+from pathlib import Path
+
 
 def strength_checker(password):
-
-
-    password = input("Enter your password: ")
-
     score = 0
-    x = 0
+    categories = 0
 
-    with open("common_passwords.txt", "r") as file:
+    password_file = Path(__file__).with_name("common_passwords.txt")
+    with password_file.open("r", encoding="utf-8") as file:
         common_passwords = file.read().splitlines()
 
     if password in common_passwords:
         print("This password is too common. Your strength is 0. Try again!")
-        return
-    
+        return 0
+
     if any(char.isupper() for char in password):
         score += 1
-        x += 1
+        categories += 1
     if any(char.islower() for char in password):
         score += 1
-        x += 1
+        categories += 1
     if any(char in string.punctuation for char in password):
         score += 1
-        x += 1
+        categories += 1
     if any(char.isdigit() for char in password):
         score += 1
-        x += 1
-    if x < 4:
-        return score
+        categories += 1
 
-    if len(password) <= 8:
+    if len(password) >= 8:
         score += 1
-    elif len(password) <= 12:
+    if len(password) >= 12:
         score += 1
-    elif len(password) <= 16:
+    if len(password) >= 16:
         score += 1
-        return score
 
-    
     if score <= 2:
-        print("Weak")
+        feedback = "Weak"
     elif score <= 4:
-        print("Medium!")
+        feedback = "Medium"
     elif score <= 5:
-        print("Strong!")
+        feedback = "Strong"
     else:
-        print("Very strong!")
+        feedback = "Very strong"
+
+    print(f"{feedback}! Your score is {score}.")
     return score
 
-while True:
+
+if __name__ == "__main__":
     password = input("Enter your password: ")
     strength_checker(password)
