@@ -17,7 +17,7 @@ def caesar_decrypt(text, shift):
 #main interface
 print("=" * 10 + "WELCOME TO CAESAR CIPHER" + "=" * 10)
 while True:
-    choice = int(input("Would you like to 1. Encrypt 2. Decrypt 3. Exit"))
+    choice = int(input("Would you like to 1.Encrypt, 2.Decrypt, 3.Exit"))
     if choice == 3:
         print("Goodbye!")
         break
