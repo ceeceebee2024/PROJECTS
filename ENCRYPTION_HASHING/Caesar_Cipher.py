@@ -13,3 +13,8 @@ def caesar_cipher(text,shift):
     return encrypted_text
 
 print(caesar_cipher("Hello world", 3))
+
+def caesar_decrypt(text, shift):
+    return caesar_cipher(text, -shift)
+
+print(caesar_decrypt("Khoor zruog", 3))
