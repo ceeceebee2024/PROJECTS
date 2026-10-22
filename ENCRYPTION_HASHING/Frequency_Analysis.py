@@ -9,3 +9,12 @@ def frequency_analysis(ciphertext):
                 frequency[char] = 1
     sorted_frequency = sorted(frequency.items(), key=lambda x: x[1], reverse=True)
     return sorted_frequency
+
+print("=" *10 + "FREQUENCY ANALYSIS PROGRAM" + "=" * 10)
+ciphertext = input("Enter the ciphertext: ")
+
+analysis_result = frequency_analysis(ciphertext)
+
+print("Analysis Result: ")
+for letter, count in analysis_result:
+    print(f"{letter}:{count}")
