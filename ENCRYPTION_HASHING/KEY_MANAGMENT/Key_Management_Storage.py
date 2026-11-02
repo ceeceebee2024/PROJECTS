@@ -9,7 +9,7 @@ def store_key(filename, key): #store key in file
         file.write(key)
 
 
-def load_key(filename): # read key form file 
+def load_key(filename): # read key from file 
     with open(filename, "r") as file:
         return file.read()
 
